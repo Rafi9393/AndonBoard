@@ -1,0 +1,377 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #171c22;
+    color: #cccecf;
+    margin: 0;
+    padding: 0;
+}
+
+/* andonList */
+.container {
+    padding: 20px;
+}
+
+.filters {
+    margin-bottom: 20px;
+}
+
+.filters input,
+.filters select,
+.filters button {
+    margin-right: 10px;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+thead {
+    background-color: #23272A;
+}
+
+th,
+td {
+    padding: 10px;
+    text-align: left;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #2C2F33;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: #23272A;
+}
+
+.options button {
+    padding: 5px 10px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+}
+
+.options button:hover {
+    background-color: #FF5555;
+}
+
+button.edit {
+    background-color: #FFAA00;
+    color: #FFFFFF;
+}
+
+button.open {
+    background-color: #00AA00;
+    color: #FFFFFF;
+}
+
+/* Pagination */
+.pagination .page-link {
+    color: #cccecf;
+    background-color: #23272A;
+    border: 1px solid #2C2F33;
+    margin: 0 5px;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.pagination .page-item.disabled .page-link {
+    color: #6c757d;
+    background-color: #23272A;
+    border-color: #2C2F33;
+}
+
+.pagination .page-item .page-link:hover {
+    color: #FFFFFF;
+    background-color: #FF5555;
+    border-color: #FF5555;
+}
+
+.pagination .page-item.active .page-link {
+    color: #FFFFFF;
+    background-color: #FF5555;
+    border-color: #FF5555;
+}
+
+/* Andon */
+.andon-container {
+    text-align: center;
+    width: 100%;
+}
+
+.header {
+    margin-bottom: 20px;
+    text-align: left;
+}
+
+.title {
+    font-size: calc(1rem + 1vw);
+    color: #dddddd;
+}
+
+.date {
+    font-size: calc(0.8rem + 0.8vw);
+    color: #dddddd;
+}
+
+.metrics {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.metric {
+    text-align: center;
+}
+
+.label {
+    font-size: calc(3rem + 1vw);
+    margin-bottom: 10px;
+}
+
+.value {
+    font-size: calc(8rem + 3vw);
+    padding: 20px;
+    border-radius: 10px;
+}
+
+#target {
+    background-color: #555555;
+}
+
+#plan {
+    background-color: #0077b3;
+}
+
+#actual {
+    background-color: #b30000;
+}
+
+.tile {
+    font-size: 1vm;
+}
+
+#content {
+    margin-top: 5%;
+    font-size: calc(8rem + 3vw);
+}
+/* CreateNewAndon */
+/* Styl dla formularza */
+.formBox {
+    color: #cccecf;
+    background: #202932;
+    padding: 10px;
+    border: 2px solid #171c22;
+    border-radius: 4px;
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 100%;
+}
+
+.formBox[readonly] {
+    background-color: #66819d;
+    color: #333;
+    cursor: not-allowed;
+}
+
+
+
+.formBox:hover {
+    background-color: #2b3036;
+    border-color: #046994;
+}
+
+.formBox:focus {
+    border-color: #046994 !important;
+    box-shadow: 0 0 0 0.2rem rgba(4, 105, 148, 0.25) !important;
+    outline: none;
+}
+
+/* Styl dla nagłówka */
+.main-header {
+    margin-bottom: 50px;
+    text-align: center;
+    font-size: 50px;
+    font-weight: bolder;
+}
+
+/* Styl dla przycisku */
+.save-button {
+    margin-top: 20px;
+}
+
+.form-container {
+    background-color: #1c1f24;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    margin-top: 30px;
+    font-size: 18px;
+}
+
+h4 {
+    text-align: center;
+    font-size: 18;
+    font-weight: bolder;
+}
+
+/* Style dla tła rozmytego */
+body.blur-background #main-content {
+    filter: blur(5px);
+    pointer-events: none;
+    /* Zapobiega interakcji z tłem */
+}
+
+/* Style dla okienka */
+#confirmationBox {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: #1c1f24;
+    padding: 20px;
+    border: 1px solid #ccc;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+    z-index: 1001;
+    /* Wyższy indeks, aby okienko było na wierzchu */
+}
+
+/* Style dla półprzezroczystego tła */
+#overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    /* Wyższy indeks, aby przykryć całą stronę */
+    display: none;
+}
+
+/* Styl dla inputa poprawnego */
+.is-valid {
+    border: 1px solid #28a745;
+}
+
+.is-invalid {
+    border: 1px solid #dc3545;
+}
+
+#workStationError {
+    margin-top: 0.25rem;
+    font-size: small;
+    
+}
+
+.success-message {
+    color: green !important;
+    font-size: small;
+}
+
+.edit-button {
+    background-color: #FFAA00;
+    color: #FFFFFF;
+    margin-right: 5px;
+}
+
+.start-button {
+    background-color: #00AA00;
+    color: #FFFFFF;
+}
+
+
+
+.header-cell {
+    display: flex;
+    align-items: center;
+}
+
+.header-cell span {
+    margin-right: 10px;
+}
+
+.filter-input {
+    flex: 1;
+    max-width: 200px;
+    margin-left: 0;
+    padding: 5px;
+    border: none;
+    border-radius: 3px;
+    background-color: #2C2F33;
+    color: #cccecf;
+    font-size: 14px;
+}
+
+.filter-input:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #046994;
+}
+
+
+
+/* Style for the menu */
+.sidebar {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    background-color: #20232A;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidebar a {
+    padding: 10px 15px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidebar a:hover {
+    color: #f1f1f1;
+}
+
+.sidebar .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.openbtn {
+    font-size: 20px;
+    cursor: pointer;
+    background-color: #20232A;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    margin: 10px;
+    border-radius: 5%;
+}
+
+.openbtn:hover {
+    background-color: #444;
+}
+
+
+
+#menu-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+}
+
+#menu-container img {
+    max-height: 50px;
+}

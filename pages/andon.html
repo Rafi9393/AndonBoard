@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andon Dashboard</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+<body>
+    <div id="overlay"></div>
+
+    <div id="confirmationBox" class="text-center" style="display:none;">
+        <p id="confirmationMessage"></p>
+        <button onclick="closeConfirmation()" class="btn btn-secondary">Zamknij</button>
+    </div>
+    <div class="container-fluid andon-container">
+        <div class="row header">
+            <div class="col-6 title" id="description">Nazwa linii/stanowiska</div>
+            <div class="col-6 date text-right" id="actuallDate"></div>
+        </div>
+        <div class="row metrics">
+            <div class="col-4 metric">
+                <div class="label">Target</div>
+                <div class="value" id="target">55</div>
+            </div>
+            <div class="col-4 metric">
+                <div class="label">Plan</div>
+                <div class="value" id="plan">45</div>
+            </div>
+            <div class="col-4 metric">
+                <div class="label">Actual</div>
+                <div class="value" id="actual">0</div>
+            </div>
+        </div>
+        <div id="content"></div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            andonInit();
+            setInterval(andonInit,5000);
+        });
+        
+    </script>
+    
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.4/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <title>Lista Andonów</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+
+</head>
+
+<body>
+    <div id="menu-container">
+        <div id="menu-items">
+        </div>
+        <div id="logo-container">
+            <img src="../img/logo.png" alt="Logo">
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="container">
+            <h1 class="main-header">Lista Andonów</h1>
+            <div class="andon-list">
+                <table id="andonTable" class="table table-dark table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">
+                                <div class="header-cell">
+                                    <span>Opis</span>
+                                    <input type="text" id="descriptionFilter" class="filter-input" placeholder="Filtruj...">
+                                </div>
+                            </th>
+                            <th scope="col">
+                                <div class="header-cell">
+                                    <span>Numer Stanowiska</span>
+                                    <input type="text" id="workStationFilter" class="filter-input" placeholder="Filtruj...">
+                                </div>
+                            </th>
+                            <th scope="col">Akcje</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Tabela wypełniana dynamicznie przez JavaScript -->
+                    </tbody>
+                </table>
+                <nav aria-label="Pagination">
+                    <ul id="pagination" class="pagination justify-content-center">
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            initListPage();
+        });
+    </script>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

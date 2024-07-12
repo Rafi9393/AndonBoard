@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <TITLE>Dodanie Andonu</TITLE>
+    <META http-equiv="X-UA-Compatible" content="IE=edge">
+    <META http-equiv='cache-control' content='no-cache'>
+    <META http-equiv='expires' content='0'>
+    <META http-equiv='pragma' content='no-cache'>
+    <meta charset="UTF-8">
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/script.js"></script>
+</head>
+</head>
+
+<body>
+    <div id="menu-container">
+        <div id="menu-items">
+        </div>
+        <div id="logo-container">
+            <img src="../img/logo.png" alt="Logo">
+        </div>
+    </div>
+    <div id="overlay"></div>
+
+    <div id="confirmationBox" class="text-center" style="display:none;">
+        <p id="confirmationMessage"></p>
+        <button onclick="closeConfirmation()" class="btn btn-secondary">Zamknij</button>
+    </div>
+    <div class="main-content">
+        <div class="container">
+            <h1 class="main-header">Konfiguracja nowego andonu</h1>
+            <div class="form-container">
+
+                <form class="productionForm" id="productionForm" onsubmit="validateForm(event, '.productionForm')">
+                    <div class="form-group row justify-content-end mt-2">
+                        <label for="workStationTemplate" class="col-sm-auto col-form-label">Użyj jako szablon:</label>
+                        <div class="col-sm-5">
+                            <div class="input-group">
+                                <select class="formBox" id="workStationTemplate">
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="form-group">
+                        <label for="workStation">Stanowisko robocze</label>
+                        <input type="text" class="formBox" id="workStation" placeholder="16xxxxxx"
+                            oninput="validateWorkStation()">
+                        <div id="workStationError" style="color: red; font-size: small;"></div>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Opis</label>
+                        <input type="text" class="formBox" placeholder="Np: MBK - Pakowanie" id="description">
+                    </div>
+
+                    <hr>
+
+                    <h4>Godziny pracy pierwszej zmiany</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstShiftStart">Od</label>
+                            <input type="time" class="formBox" id="firstShiftStart">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="firstShiftEnd">Do</label>
+                            <input type="time" class="formBox" id="firstShiftEnd">
+                        </div>
+                    </div>
+                    <h4>Przerwy</h4>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstShiftBreak1Start">Przerwa 1 od</label>
+                            <input type="time" class="formBox" id="firstShiftBreak1Start">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="firstShiftBreak1End">do</label>
+                            <input type="time" class="formBox" id="firstShiftBreak1End">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstShiftBreak2Start">Przerwa 2 od</label>
+                            <input type="time" class="formBox" id="firstShiftBreak2Start">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="secondShiftBreak2End">do</label>
+                            <input type="time" class="formBox" id="firstShiftBreak2End">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="firstShiftBreak3Start">Przerwa 3 od</label>
+                            <input type="time" class="formBox" id="firstShiftBreak3Start">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="secondShiftBreak3End">do</label>
+                            <input type="time" class="formBox" id="firstShiftBreak3End">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <h4>Ilość sztuk do wykonania</h4>
+                        <input type="number" class="formBox" id="firstShiftQuantity">
+                    </div>
+
+                    <hr>
+
+
+
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="secondShiftCheckbox"
+                            onchange="toggleSection('secondShiftSection')">
+                        <label class="form-check-label" for="secondShiftCheckbox">
+                            Druga zmiana
+                        </label>
+                    </div>
+
+
+
+
+                    <div id="secondShiftSection" class="form-section" style="display: none;">
+                        <h4>Godziny pracy drugiej zmiany</h4>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="secondShiftStart">Od</label>
+                                <input type="time" class="formBox" id="secondShiftStart">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftEnd">Do</label>
+                                <input type="time" class="formBox" id="secondShiftEnd">
+                            </div>
+                        </div>
+                        <h4>Przerwy</h4>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak1Start">Przerwa 1 od</label>
+                                <input type="time" class="formBox" id="secondShiftBreak1Start">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak1End">do</label>
+                                <input type="time" class="formBox" id="secondShiftBreak1End">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak2Start">Przerwa 2 od</label>
+                                <input type="time" class="formBox" id="secondShiftBreak2Start">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="secondShiftBreak2End">do</label>
+                                <input type="time" class="formBox" id="secondShiftBreak2End">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak3Start">Przerwa 3 od</label>
+                                <input type="time" class="formBox" id="secondShiftBreak3Start">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="secondShiftBreak3End">do</label>
+                                <input type="time" class="formBox" id="secondShiftBreak3End">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h4>Ilość sztuk do wykonania</h4>
+                            <input type="number" class="formBox" id="secondShiftQuantity">
+                        </div>
+                    </div>
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="thirdShiftCheckbox"
+                            onchange="toggleSection('thirdShiftSection')">
+                        <label class="form-check-label" for="thirdShiftCheckbox">
+                            Trzecia zmiana
+                        </label>
+                    </div>
+                    <div id="thirdShiftSection" class="form-section" style="display: none;">
+                        <h4>Godziny pracy trzeciej zmiany</h4>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="thirdShiftStart">Od</label>
+                                <input type="time" class="formBox" id="thirdShiftStart">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftEnd">Do</label>
+                                <input type="time" class="formBox" id="thirdShiftEnd">
+                            </div>
+                        </div>
+                        <h4>Przerwy</h4>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak1Start">Przerwa 1 od</label>
+                                <input type="time" class="formBox" id="thirdShiftBreak1Start">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak1End">do</label>
+                                <input type="time" class="formBox" id="thirdShiftBreak1End">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak2Start">Przerwa 2 od</label>
+                                <input type="time" class="formBox" id="thirdShiftBreak2Start">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="secondShiftBreak2End">do</label>
+                                <input type="time" class="formBox" id="thirdShiftBreak2End">
+                            </div>
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group col-md-6">
+                                <label for="firstShiftBreak3Start">Przerwa 3 od</label>
+                                <input type="time" class="formBox" id="thirdShiftBreak3Start">
+                            </div>
+                            <div class="form-group col-md-6">
+                                <label for="secondShiftBreak3End">do</label>
+                                <input type="time" class="formBox" id="thirdShiftBreak3End">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <h4>Ilość sztuk do wykonania</h4>
+                            <input type="number" class="formBox" id="thirdShiftQuantity">
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary">Wyślij</button>
+                    <button type="button" class="btn btn-secondary" onclick="clearForm()">Wyczyść</button>
+                </form>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            initCreatePage();
+        });
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.5.3/dist/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>
